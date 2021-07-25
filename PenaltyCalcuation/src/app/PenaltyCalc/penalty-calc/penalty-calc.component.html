@@ -1,0 +1,17 @@
+<ejs-datepicker id='datepickercheckin' placeholder='Select a date' [format]="format" (change)="clickvaluecheckin($event)"></ejs-datepicker>
+<ejs-datepicker id='datepickercheckout' placeholder='Select a date' [format]="format" (change)="clickvaluechekout($event)"></ejs-datepicker>
+<div *ngIf="penalty" >
+<select  (change)="countryChange($event)">
+    <option>Select Country</option>
+    <option *ngFor="let penobj of penalty" [value]="penobj.country">
+        {{penobj.country}}
+    </option>
+</select>
+</div>
+<button (click)="CalculateResponse()">Calculate</button>
+<br>
+<div>
+    <p>
+     Total days {{ output }} <b *ngIf="fine && fine > 0"> and penalty will be {{ fine | currency:'USD' }}</b>
+    </p>
+</div>
